@@ -94,6 +94,7 @@ export function useAIGenerate() {
     setContentFromVersion,
     setLoading,
     thumbnailGetter,
+    setProject,
   } = useEditorStore()
 
   const { setMessages } = usePayloadStore()
@@ -214,15 +215,31 @@ export function useAIGenerate() {
       // For drawio, use the registered thumbnailGetter from CanvasArea for accurate rendering
       try {
         let thumbnail: string = ''
-        if (engineType === 'drawio' && thumbnailGetter) {
-          // Use Draw.io's native export for accurate thumbnail
-          thumbnail = await thumbnailGetter()
+        if (engineType === 'drawio') {
+          // For drawio, wait a bit for the editor to be ready after content update
+          // Then retry getting thumbnail with delay
+          const getThumbnailWithRetry = async (maxRetries = 3, delay = 500): Promise<string> => {
+            for (let i = 0; i < maxRetries; i++) {
+              // Wait for editor to process the new content
+              await new Promise(resolve => setTimeout(resolve, delay))
+              // Get fresh thumbnailGetter from store
+              const getter = useEditorStore.getState().thumbnailGetter
+              if (getter) {
+                const result = await getter()
+                if (result) return result
+              }
+            }
+            return ''
+          }
+          thumbnail = await getThumbnailWithRetry()
         } else {
           // Use fallback method for other engines
           thumbnail = await generateThumbnail(finalCode, engineType)
         }
         if (thumbnail) {
           await ProjectRepository.update(currentProject.id, { thumbnail })
+          // Update currentProject in store so thumbnail is visible immediately
+          setProject({ ...currentProject, thumbnail })
         }
       } catch (err) {
         console.error('Failed to generate thumbnail:', err)
