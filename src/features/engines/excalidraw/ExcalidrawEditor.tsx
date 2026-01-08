@@ -417,13 +417,13 @@ export const ExcalidrawEditor = forwardRef<ExcalidrawEditorRef, ExcalidrawEditor
           onChange={handleChange}
           excalidrawAPI={(api) => setExcalidrawAPI(api)}
           theme="light"
-          UIOptions={{
-            canvasActions: {
-              loadScene: false,
-              export: false,
-              saveAsImage: false,
-            },
-          }}
+          // UIOptions={{
+          //   canvasActions: {
+          //     loadScene: false,
+          //     export: false,
+          //     saveAsImage: false,
+          //   },
+          // }}
         />
 
         {/* Code Panel */}
