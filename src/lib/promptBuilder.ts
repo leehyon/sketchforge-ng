@@ -1,5 +1,5 @@
 import type { EngineType } from '@/types'
-import { mermaidSystemPrompt, drawioSystemPrompt, excalidrawSystemPrompt } from './prompts'
+import { mermaidSystemPrompt, drawioSystemPrompt, excalidrawSystemPrompt, plantumlSystemPrompt } from './prompts'
 
 /**
  * System prompts for different engines
@@ -8,6 +8,7 @@ export const SYSTEM_PROMPTS: Record<EngineType, string> = {
   mermaid: mermaidSystemPrompt,
   excalidraw: excalidrawSystemPrompt,
   drawio: drawioSystemPrompt,
+  plantuml: plantumlSystemPrompt,
 }
 
 /**

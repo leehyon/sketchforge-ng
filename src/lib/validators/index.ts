@@ -25,6 +25,41 @@ export async function validateMermaid(code: string): Promise<ValidationResult> {
 }
 
 /**
+ * PlantUML validator
+ * Ensures code contains @startuml/@enduml and the PlantUML server can render it to SVG
+ */
+export async function validatePlantUML(code: string): Promise<ValidationResult> {
+  try {
+    const trimmed = code.trim()
+    if (!trimmed.startsWith('@startuml') || !trimmed.includes('@enduml')) {
+      return { valid: false, error: 'PlantUML must start with @startuml and end with @enduml' }
+    }
+
+    // Try to encode and request the PlantUML server to validate render
+    try {
+      const encoder = await import('plantuml-encoder')
+      const encoded = encoder.default.encode(trimmed)
+      const url = `https://www.plantuml.com/plantuml/svg/${encoded}`
+      const res = await fetch(url, { method: 'GET' })
+      if (!res.ok) {
+        return { valid: false, error: `PlantUML server returned ${res.status}` }
+      }
+      const text = await res.text()
+      if (!text || !text.includes('<svg')) {
+        return { valid: false, error: 'Invalid PlantUML output from server' }
+      }
+      return { valid: true }
+    } catch (err) {
+      const message = err instanceof Error ? err.message : 'Failed to validate PlantUML with server'
+      return { valid: false, error: message }
+    }
+  } catch (err) {
+    const message = err instanceof Error ? err.message : 'Invalid PlantUML format'
+    return { valid: false, error: message }
+  }
+}
+
+/**
  * Excalidraw JSON validator
  * Validates JSON format and required fields
  * Supports both array format (direct elements) and object format (with type/elements fields)
@@ -125,6 +160,8 @@ export async function validateContent(
       return validateExcalidraw(content)
     case 'drawio':
       return validateDrawio(content)
+    case 'plantuml':
+      return validatePlantUML(content)
     default:
       return { valid: false, error: `Unknown engine type: ${engineType}` }
   }

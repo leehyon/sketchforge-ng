@@ -17,6 +17,7 @@ export const ENGINES: { value: EngineType; label: string }[] = [
   { value: 'mermaid', label: 'Mermaid' },
   { value: 'excalidraw', label: 'Excalidraw' },
   { value: 'drawio', label: 'Draw.io' },
+  { value: 'plantuml', label: 'PlantUML' },
 ]
 
 export const NAV_ITEMS = [
@@ -62,5 +63,11 @@ export const QUICK_ACTIONS = [
     icon: Users,
     engine: 'drawio' as EngineType,
     prompt: '请帮我用DrawIO绘制一个公司组织架构图，包含CEO、各部门经理、团队成员的层级关系'
+  },
+  {
+    label: '用 PlantUML 绘制时序图',
+    icon: BookOpen,
+    engine: 'plantuml' as EngineType,
+    prompt: '请帮我用 PlantUML 绘制一个用户登录的时序图，包含浏览器、服务器、数据库之间的请求与响应流程'
   },
 ]

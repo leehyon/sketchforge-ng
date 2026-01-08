@@ -36,6 +36,13 @@ const ENGINE_TIPS: Record<EngineType, { title: string; features: string[] }> = {
       '支持 UML、网络拓扑、流程图等专业图表,适合绘制复杂、精细的技术文档图表',
     ],
   },
+  plantuml: {
+    title: 'PlantUML',
+    features: [
+      '基于代码的专业图表语言，适合生成时序图、类图、组件图等',
+      '便于版本控制、模板化和自动化生成，适合工程化场景',
+    ],
+  },
 }
 
 interface CreateProjectDialogProps {

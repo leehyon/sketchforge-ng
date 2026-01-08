@@ -183,6 +183,18 @@ export async function generateThumbnail(
       // Drawio thumbnails are generated via thumbnailGetter in editorStore
       // which uses DrawioEditor's native export for accurate rendering
       return ''
+    case 'plantuml':
+      try {
+        const encoded = (await import('plantuml-encoder')).default.encode(content)
+        const url = `https://www.plantuml.com/plantuml/svg/${encoded}`
+        const res = await fetch(url)
+        if (!res.ok) return ''
+        const svg = await res.text()
+        return await svgToDataUrl(svg)
+      } catch (err) {
+        console.error('Failed to generate PlantUML thumbnail:', err)
+        return ''
+      }
     default:
       return ''
   }

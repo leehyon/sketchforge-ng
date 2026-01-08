@@ -1,5 +1,5 @@
 // Engine Types
-export type EngineType = 'mermaid' | 'excalidraw' | 'drawio'
+export type EngineType = 'mermaid' | 'excalidraw' | 'drawio' | 'plantuml'
 
 // Project
 export interface Project {

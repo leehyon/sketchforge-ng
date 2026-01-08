@@ -3,6 +3,7 @@ import { useEditorStore, selectEngineType } from '@/stores/editorStore'
 import { MermaidRenderer, type MermaidRendererRef } from '@/features/engines/mermaid/MermaidRenderer'
 import { ExcalidrawEditor, type ExcalidrawEditorRef } from '@/features/engines/excalidraw/ExcalidrawEditor'
 import { DrawioEditor, type DrawioEditorRef } from '@/features/engines/drawio/DrawioEditor'
+import { PlantUMLRenderer, type PlantUMLRendererRef } from '@/features/engines/plantuml/PlantUMLRenderer'
 
 export interface CanvasAreaRef {
   exportAsSvg: () => void
@@ -34,6 +35,7 @@ export const CanvasArea = forwardRef<CanvasAreaRef, CanvasAreaProps>(function Ca
   const mermaidRef = useRef<MermaidRendererRef>(null)
   const excalidrawRef = useRef<ExcalidrawEditorRef>(null)
   const drawioRef = useRef<DrawioEditorRef>(null)
+  const plantumlRef = useRef<PlantUMLRendererRef>(null)
 
   // Expose methods via ref
   useImperativeHandle(ref, () => ({
@@ -48,6 +50,9 @@ export const CanvasArea = forwardRef<CanvasAreaRef, CanvasAreaProps>(function Ca
         case 'drawio':
           drawioRef.current?.exportAsSvg()
           break
+        case 'plantuml':
+          plantumlRef.current?.exportAsSvg()
+          break
       }
     },
     exportAsPng: () => {
@@ -60,6 +65,9 @@ export const CanvasArea = forwardRef<CanvasAreaRef, CanvasAreaProps>(function Ca
           break
         case 'drawio':
           drawioRef.current?.exportAsPng()
+          break
+        case 'plantuml':
+          plantumlRef.current?.exportAsPng()
           break
       }
     },
@@ -74,6 +82,9 @@ export const CanvasArea = forwardRef<CanvasAreaRef, CanvasAreaProps>(function Ca
         case 'drawio':
           drawioRef.current?.exportAsSource()
           break
+        case 'plantuml':
+          plantumlRef.current?.exportAsSource()
+          break
       }
     },
     showSourceCode: () => {
@@ -86,6 +97,9 @@ export const CanvasArea = forwardRef<CanvasAreaRef, CanvasAreaProps>(function Ca
           break
         case 'drawio':
           drawioRef.current?.showSourceCode()
+          break
+        case 'plantuml':
+          plantumlRef.current?.showSourceCode()
           break
       }
     },
@@ -100,6 +114,9 @@ export const CanvasArea = forwardRef<CanvasAreaRef, CanvasAreaProps>(function Ca
         case 'drawio':
           drawioRef.current?.hideSourceCode()
           break
+        case 'plantuml':
+          plantumlRef.current?.hideSourceCode()
+          break
       }
     },
     toggleSourceCode: () => {
@@ -112,6 +129,9 @@ export const CanvasArea = forwardRef<CanvasAreaRef, CanvasAreaProps>(function Ca
           break
         case 'drawio':
           drawioRef.current?.toggleSourceCode()
+          break
+        case 'plantuml':
+          plantumlRef.current?.toggleSourceCode()
           break
       }
     },
@@ -193,6 +213,14 @@ export const CanvasArea = forwardRef<CanvasAreaRef, CanvasAreaProps>(function Ca
             key={projectKey}
             data={currentContent}
             onChange={handleContentChange}
+          />
+        )
+      case 'plantuml':
+        return (
+          <PlantUMLRenderer
+            ref={plantumlRef}
+            code={currentContent}
+            key={projectKey}
           />
         )
       default:
