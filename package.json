@@ -7,6 +7,8 @@
     "dev": "concurrently \"pnpm run dev:frontend\" \"pnpm run dev:backend\"",
     "dev:frontend": "vite",
     "dev:backend": "wrangler pages dev --compatibility-date=2024-01-01 --proxy=5173",
+    "dev:local-backend": "ts-node ./src/server/index.ts",
+    "dev:local": "concurrently \"pnpm run dev:frontend\" \"pnpm run dev:local-backend\"",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",

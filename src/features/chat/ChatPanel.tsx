@@ -341,7 +341,7 @@ export function ChatPanel({ onCollapse }: ChatPanelProps) {
         {/* Header */}
         <div className="flex items-center justify-between border-b border-border px-4 py-1">
           <div>
-            <h2 className="font-medium text-primary">AI 助手</h2>
+            <h2 className="font-medium text-primary">AI</h2>
           <p className="text-xs text-muted">
             {isCanvasEmpty ? '新建图表' : '基于当前图表修改'}
             </p>

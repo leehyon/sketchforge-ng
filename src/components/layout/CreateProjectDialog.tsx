@@ -18,8 +18,8 @@ const ENGINE_TIPS: Record<EngineType, { title: string; features: string[] }> = {
   mermaid: {
     title: 'Mermaid',
     features: [
-      '基于文本的图表生成，使用简洁的语法,适合快速绘制结构化图表',
-      '支持流程图、时序图、甘特图、ER图等多种图表,可直接嵌入 Markdown',
+      '基于文本的图表生成，使用简洁的语法，适合快速绘制结构化图表',
+      '支持流程图、时序图、甘特图、ER 图等多种图表，可直接嵌入 Markdown',
     ],
   },
   excalidraw: {
@@ -32,8 +32,8 @@ const ENGINE_TIPS: Record<EngineType, { title: string; features: string[] }> = {
   drawio: {
     title: 'Draw.io',
     features: [
-      '专业级图表编辑器，功能丰富,内置大量模板和图形库',
-      '支持 UML、网络拓扑、流程图等专业图表,适合绘制复杂、精细的技术文档图表',
+      '专业级图表编辑器，功能丰富，内置大量模板和图形库',
+      '支持 UML、网络拓扑、流程图等专业图表，适合绘制复杂、精细的技术文档图表',
     ],
   },
   plantuml: {

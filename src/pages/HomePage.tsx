@@ -244,10 +244,10 @@ export function HomePage() {
                 <Sparkles className="h-6 w-6 text-surface" />
               </div> */}
               <h1 className="text-3xl font-bold text-primary">
-                AI Draw Nexus 
+                Sketchforge Next Generation
               </h1>
             </div>
-            <p className="text-muted">AI驱动的一站式绘图平台</p>
+            <p className="text-muted">下一代草图创作工坊</p>
           </div>
 
           {/* Chat Input Box */}
@@ -295,7 +295,7 @@ export function HomePage() {
 
               <textarea
                 ref={textareaRef}
-                placeholder="描述你想要绘制的图表，AI Draw Nexus 会帮你完成...（支持粘贴图片）"
+                placeholder="描述你想要绘制的草图/或上传截图……"
                 value={prompt}
                 onChange={(e) => setPrompt(e.target.value)}
                 onKeyDown={handleKeyDown}
@@ -322,12 +322,12 @@ export function HomePage() {
                   <button
                     onClick={handleAttachmentClick}
                     className="group relative flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-sm text-muted transition-colors hover:bg-background hover:text-primary"
-                    title="可上传文档一键转化为图表，或上传截图复刻图表"
+                    title="可上传文档一键转化为草图，或上传截图复刻草图"
                   >
                     <Paperclip className="h-4 w-4" />
                     <span>上传附件</span>
                     <div className="pointer-events-none absolute bottom-full left-1/2 mb-2 -translate-x-1/2 whitespace-nowrap rounded-lg bg-primary px-3 py-2 text-xs text-surface opacity-0 shadow-lg transition-opacity group-hover:opacity-100">
-                      可上传文档一键转化为图表，或上传截图复刻图表
+                      可上传文档一键转化为草图，或上传截图复刻草图
                       <div className="absolute left-1/2 top-full -translate-x-1/2 border-4 border-transparent border-t-primary"></div>
                     </div>
                   </button>
@@ -338,12 +338,12 @@ export function HomePage() {
                       onClick={() => setShowUrlInput(!showUrlInput)}
                       disabled={isParsingUrl}
                       className="group relative flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-sm text-muted transition-colors hover:bg-background hover:text-primary disabled:opacity-50"
-                      title="添加网页链接，AI将解析内容"
+                      title="添加网页链接，AI 将解析内容"
                     >
                       <Link className="h-4 w-4" />
                       <span>添加链接</span>
                       <div className="pointer-events-none absolute bottom-full left-1/2 mb-2 -translate-x-1/2 whitespace-nowrap rounded-lg bg-primary px-3 py-2 text-xs text-surface opacity-0 shadow-lg transition-opacity group-hover:opacity-100">
-                        添加网页链接，AI将解析内容生成图表
+                        添加网页链接，AI 将解析内容生成草图
                         <div className="absolute left-1/2 top-full -translate-x-1/2 border-4 border-transparent border-t-primary"></div>
                       </div>
                     </button>
@@ -413,9 +413,9 @@ export function HomePage() {
                         {ENGINES.map((engine) => {
                           const descriptions: Record<string, string> = {
                             mermaid: '简洁标准的图形绘制',
+                            plantuml: '基于代码的专业图表',
                             excalidraw: '优雅干净的手绘风格',
-                            drawio: '专业而强大的绘图工具',
-                            plantuml: '基于代码的专业图表工具',
+                            drawio: '通用老派的绘图工具',
                           }
                           return (
                             <button
