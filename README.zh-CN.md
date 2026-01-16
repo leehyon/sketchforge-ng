@@ -1,27 +1,19 @@
-# AI Diagram Hub
+# 下一代草图创作工坊
 
-**Online**: https://ai-draw-nexus.aizhi.site
-
-一个 AI 驱动的图表创作平台，用自然语言描述你想要的图表，AI 帮你生成。
+一个 AI 驱动的草图创作平台，用自然语言描述你想要的图表，AI 帮你生成。
 
 基于 Cloudflare Pages 构建，前端 React + 后端 Pages Functions 一体化部署。
 
-## 界面截图
-
-<img width="2324" height="1248" alt="image" src="https://github.com/user-attachments/assets/3f3ed9ca-9c4a-4782-888a-391c5ac8a17d" />
-<img width="2324" height="1248" alt="image" src="https://github.com/user-attachments/assets/51f3ac22-ac35-4031-8b65-740c99164238" />
-<img width="2324" height="1248" alt="image" src="https://github.com/user-attachments/assets/d21aa025-1785-47c8-b6b3-9e9a2f2b7a21" />
-
-
 ## 核心亮点
 
-### 三大绘图引擎
+### 四大绘图引擎
 
-支持三种各具特色的绘图引擎，满足不同场景需求：
+支持四种各具特色的绘图引擎，满足不同场景需求：
 
 - **Mermaid** - 流程图、时序图、类图等，代码驱动，精确可控
 - **Excalidraw** - 手绘风格图表，简洁美观，适合头脑风暴
 - **Draw.io** - 专业图表编辑器，功能丰富，适合复杂图表
+- **PlantUML** - 代码生成设计图，程序员不可或缺的 UML 工具
 
 ### 简约好用的项目管理
 
@@ -49,7 +41,7 @@
 ### 方式一：首页快速生成
 
 1. 打开首页
-2. 选择绘图引擎（Mermaid / Excalidraw / Draw.io）
+2. 选择绘图引擎（Mermaid / Excalidraw / Draw.io / PlantUML）
 3. 输入图表描述，例如："画一个用户登录流程图"
 4. 点击生成，AI 自动创建项目并生成图表
 
@@ -75,6 +67,7 @@
 - **Excalidraw** - 直接在画布上拖拽、绘制
 - **Draw.io** - 使用专业的图表编辑工具
 - **Mermaid** - 可直接编辑代码
+- **PlantUML** - 可直接编辑代码
 
 ### 版本管理
 
@@ -88,8 +81,8 @@
 ### 1. 克隆项目并安装依赖
 
 ```bash
-git clone https://github.com/liujuntao123/smart-ai-draw
-cd smart-ai-draw
+git clone https://github.com/leehyon/sketchforge-ng.git
+cd sketchforge-ng
 pnpm install
 ```
 
@@ -109,8 +102,12 @@ AI_MODEL_ID=gpt-4o-mini
 ### 3. 启动开发服务器
 
 ```bash
-# 同时启动前端和后端
+# 同时启动前端和后端 Wrangler Pages
 pnpm run dev
+# 访问 http://localhost:8787
+
+# 本地同时启动
+pnpm run dev:local
 # 访问 http://localhost:8787
 
 # 或者分别启动：

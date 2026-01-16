@@ -1,30 +1,21 @@
-# AI Diagram Hub
-[中文版](https://github.com/liujuntao123/ai-draw-nexus/blob/main/README.zh-CN.md)
+# Sketchforge NG
 
-**Online**: https://ai-draw-nexus.aizhi.site
-
-![generated-image-1766740104116](https://github.com/user-attachments/assets/3e69fa19-d31f-40b2-976c-ddb24ac138c1)
-
+[中文版](README.zh-CN.md)
 
 An AI-powered diagram creation platform. Describe your diagram in natural language, and AI generates it for you.
 
 Built on Cloudflare Pages with React frontend and Pages Functions backend.
 
-## screenshot
-<img width="2324" height="1248" alt="image" src="https://github.com/user-attachments/assets/3f3ed9ca-9c4a-4782-888a-391c5ac8a17d" />
-<img width="2324" height="1248" alt="image" src="https://github.com/user-attachments/assets/51f3ac22-ac35-4031-8b65-740c99164238" />
-<img width="2324" height="1248" alt="image" src="https://github.com/user-attachments/assets/d21aa025-1785-47c8-b6b3-9e9a2f2b7a21" />
-
-
 ## Key Highlights
 
-### Three Drawing Engines
+### Four Drawing Engines
 
-Three distinctive drawing engines to meet different needs:
+Four distinctive drawing engines to meet different needs:
 
 - **Mermaid** - Flowcharts, sequence diagrams, class diagrams - code-driven, precise control
 - **Excalidraw** - Hand-drawn style diagrams, clean and beautiful, great for brainstorming
 - **Draw.io** - Professional diagram editor, feature-rich, ideal for complex diagrams
+- **PlantUML** - Code-generated diagrams, an indispensable UML tool for programmers
 
 ### Intuitive Project Management
 
@@ -52,7 +43,7 @@ Beyond text descriptions, also supports:
 ### Option 1: Quick Generate from Homepage
 
 1. Open the homepage
-2. Select a drawing engine (Mermaid / Excalidraw / Draw.io)
+2. Select a drawing engine (Mermaid / Excalidraw / Draw.io / PlantUML)
 3. Enter your diagram description, e.g., "Draw a user login flowchart"
 4. Click Generate - AI creates the project and diagram automatically
 
@@ -78,6 +69,7 @@ In the chat panel on the right side of the editor, you can:
 - **Excalidraw** - Drag and draw directly on the canvas
 - **Draw.io** - Use professional diagram editing tools
 - **Mermaid** - Edit the code directly
+- **PlantUML** - Edit the code directly
 
 ### Version Management
 
@@ -91,8 +83,8 @@ In the chat panel on the right side of the editor, you can:
 ### 1. Clone and Install Dependencies
 
 ```bash
-git clone https://github.com/liujuntao123/smart-ai-draw
-cd smart-ai-draw
+git clone https://github.com/leehyon/sketchforge-ng.git
+cd sketchforge-ng
 pnpm install
 ```
 
@@ -112,8 +104,12 @@ AI_MODEL_ID=gpt-4o-mini
 ### 3. Start Development Server
 
 ```bash
-# Start frontend + backend together
+# Start frontend + backend together (Wrangler Pages)
 pnpm run dev
+# Visit http://localhost:8787
+
+# Start frontend + backend together locally
+pnpm run dev:local
 # Visit http://localhost:8787
 
 # Or run separately:
